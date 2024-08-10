@@ -2,3 +2,5 @@ Pillow
 numpy
 pandas
 tqdm
+tensorflow
+scikit-learn
