@@ -1,15 +1,13 @@
-from src.image_generator import create_black_and_white_image
+import os
+from src.image_generator import create_dataset
 
 def main():
-    print("Starting the image creation process...")
-
-    # Example usage of the image creation function
-    circle_position = (540, 960)  # Position of the circle (centered in the image)
-    circle_radius = 200           # Radius of the circle
-    duty_cycle = 50               # Duty cycle of the PWM pattern (0 to 100)
-    frequency = 5                # Number of PWM cycles to display within the circle
-
-    create_black_and_white_image(circle_position, circle_radius, duty_cycle, frequency)
+    csv_file_path = os.path.join("dataset", "dataset_labels.csv")
+    if not os.path.exists(csv_file_path):
+        print("CSV file not found. Creating dataset...")
+        create_dataset()
+    else:
+        print("CSV file already exists. Skipping dataset creation.")
 
 if __name__ == "__main__":
     main()
